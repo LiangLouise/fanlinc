@@ -121,7 +121,7 @@ class PostCards extends Component{
 
     render() {
 
-        if(this.state.loading) {
+        if(this.state.loading || this.state.level === '') {
             return (<div className='loading'><Spinner animation='grow' variant="info"/></div>);
         }
 
@@ -133,7 +133,7 @@ class PostCards extends Component{
                     <Card.Body>
                         <Card.Title>{this.state.title}</Card.Title>
                         <Card.Text>
-                            From {this.state.firstName} as {this.state.level}
+                            From {this.state.firstName}, a {this.state.level} Member
                         </Card.Text>
                         <Card.Text>
                             {this.state.content}

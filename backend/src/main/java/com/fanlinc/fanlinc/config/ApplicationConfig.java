@@ -18,21 +18,33 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 public class ApplicationConfig {
+	
+	@Value("${cloud.aws.credentials.accessKey}")
+	String accessKey;
+	
+	@Value("${cloud.aws.credentials.secretKey}")
+	String serectKey;
+	
+	@Value("${cloud.aws.credentials.endpoint}")
+	String endpoint;
+	
+	@Value("${cloud.aws.region.static}") 
+	String region;
 
     @Bean
     public BasicAWSCredentials basicAWSCredentials() {
-        return new BasicAWSCredentials("852EDAA06761059F3E42", "hyMjq81QQN9e7oPxUwpWSScfNbR28IS0CgihC9Cm");
+        return new BasicAWSCredentials(accessKey, serectKey);
     }
 
 
 
     @Bean
     public AmazonS3 amazonS3Client(AWSCredentials credentials,
-                                          @Value("${cloud.aws.region.static}") String region) {
+                                   String region) {
 
         AmazonS3ClientBuilder builder = AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials));
-        builder.setEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("https://s3.filebase.com", "us-east-1"));
+        builder.setEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endpoint, region));
         return builder.build();
     }
 }

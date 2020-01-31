@@ -141,5 +141,5 @@ class EventMap extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyBnWqvb-wjLsV-KKmV_05zkolugIirvF-0'
+    apiKey: '${GCP API Key}'
 }) (EventMap);

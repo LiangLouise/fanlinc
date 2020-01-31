@@ -377,7 +377,7 @@ class PostHome extends Component {
                     {this.state.title}
                 </div>
                 <div className="date">
-                    <p>From <a href={"/user/" + this.state.owner}>{this.state.oname}</a> as {this.state.level}</p>
+                    <p>From <a href={"/user/" + this.state.owner}>{this.state.oname}</a>, a {this.state.level} Member</p>
                 </div>
                 <div className="date">
                     {this.state.date}

@@ -1,0 +1,77 @@
+function ExecuteScript(strId)
+{
+  switch (strId)
+  {
+      case "5Yxux6r5AJ7":
+        Script1();
+        break;
+      case "66nR91P4qNV":
+        Script2();
+        break;
+  }
+}
+
+function Script1()
+{
+  var d = new Date();
+var weekday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+var monthName=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+var dateVal=d.getDate().toString();
+var delimeter=", ";
+var delimeter1=" ";
+var txtPostdate=""
+var lDigit=dateVal.charAt( dateVal.length-1);
+if (lDigit=="1"){
+    txtPostdate="";
+}else if(lDigit=="2"){
+    txtPostdate="";
+}else if(lDigit=="3"){
+    txtPostdate="";
+}else{
+    txtPostdate="";
+}
+var dateString=weekday[d.getDay()]+delimeter+monthName[(d.getMonth())]+delimeter1+dateVal+txtPostdate+delimeter+d.getFullYear();
+var player = GetPlayer();
+player.SetVar("SystemDate",dateString);
+}
+
+function Script2()
+{
+  var myWindow = window.open("","Print","width=810,height=610,scrollbars=1,resizable=1");
+var player=GetPlayer();
+var date=player.GetVar("SystemDate");
+var Name=player.GetVar("Name");
+var HowExp=player.GetVar("HowExp");
+var WhatExp=player.GetVar("WhatExp");
+var WhatResp=player.GetVar("WhatResp");
+var What=player.GetVar("What");
+var SoWhat=player.GetVar("SoWhat");
+var NowWhat=player.GetVar("NowWhat");
+var RefExp=player.GetVar("RefExp");
+var contents = "<html><head></head><body style='width:650px;padding:20px;'>"
+contents += "<div style='height:20px;padding:10px;margin-bottom:20px;text-align:center;'><button onclick='javascript:window.print();'>Print or Save Notes</button></div>";
+contents+="<div style='font-size:20px;font-weight:bold;margin-top:10px;'>Reflection</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'><hr></div>";
+contents+="<div style='font-size:16px;'>"+date+"</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'>Name</div>";
+contents+="<div style='font-size:17px;margin-top:5px;'>"+Name+"</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'>Think back over the previous month and try to recall an experience that surprised, moved or challenged you.</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'>What was that experience?</div>";
+contents+="<div style='font-size:17px;margin-top:5px;'>"+WhatExp+"</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'>What response did you have to that experience? Why do you think you responded that way?</div>";
+contents+="<div style='font-size:17px;margin-top:5px;'>"+WhatResp+"</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'>How did that experience, and your response, change your knowledge, assumptions or actions?</div>";
+contents+="<div style='font-size:17px;margin-top:5px;'>"+HowExp+"</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'>Student Example: Can you use the What? So What? Now What? framework to reflect on why this was a surprising experience for Amina and what she might be able to learn from it?</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'>What?</div>";
+contents+="<div style='font-size:17px;margin-top:5px;'>"+What+"</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'>So What?</div>";
+contents+="<div style='font-size:17px;margin-top:5px;'>"+SoWhat+"</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'>Now What?</div>";
+contents+="<div style='font-size:17px;margin-top:5px;'>"+NowWhat+"</div>";
+contents+="<div style='font-size:18px;font-weight:bold;margin-top:10px;'>Now that you are aware that reflection is essential to any experiential learning opportunity, consider your own experiences with reflection. When have you successfully used your reflective skills in the past? What challenges might you encounter with reflection during this experiential learning opportunity? What might be the potential benefits of reflection for you?</div>";
+contents+="<div style='font-size:17px;margin-top:5px;'>"+RefExp+"</div>";
+contents+= "</body></html>"
+myWindow.document.write(contents);
+}
+
